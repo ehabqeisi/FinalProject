@@ -11,6 +11,7 @@ const Register = () => {
 
     const handleRegister = async (e) => {
         e.preventDefault();
+        setError(''); // Clear any previous error messages
         try {
             await createUserWithEmailAndPassword(auth, email, password);
             navigate('/');
@@ -29,12 +30,14 @@ const Register = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Email"
+                    required
                 />
                 <input
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Password"
+                    required
                 />
                 {error && <p style={{ color: 'red' }}>{error}</p>}
                 <button type="submit">Register</button>
