@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
     const navigate = useNavigate();
     const auth = getAuth();
 
@@ -14,6 +15,7 @@ const Register = () => {
             await createUserWithEmailAndPassword(auth, email, password);
             navigate('/');
         } catch (error) {
+            setError('Error registering: ' + error.message);
             console.error('Error registering: ', error);
         }
     };
@@ -34,6 +36,7 @@ const Register = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Password"
                 />
+                {error && <p style={{ color: 'red' }}>{error}</p>}
                 <button type="submit">Register</button>
             </form>
         </div>

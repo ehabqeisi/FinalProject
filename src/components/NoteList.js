@@ -35,7 +35,7 @@ const NoteList = () => {
             {notes.map((note) => (
                 <Note key={note.id} note={note} />
             ))}
-            <Logout /> 
+            <Logout /> {/* Add the Logout button here */}
         </div>
     );
 };
