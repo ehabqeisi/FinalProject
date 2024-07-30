@@ -5,6 +5,8 @@ import Register from './components/Register';
 import NoteList from './components/NoteList';
 import CreateNote from './components/CreateNote';
 import EditNote from './components/EditNote';
+import NoteHistory from './components/NoteHistory';
+
 import './App.css';
 
 function App() {
@@ -17,6 +19,7 @@ function App() {
                     <Route path="/register" element={<Register />} />
                     <Route path="/create" element={<CreateNote />} />
                     <Route path="/edit/:id" element={<EditNote />} />
+                    <Route path="/history/:noteId" element={<NoteHistory />} />
                 </Routes>
             </div>
         </Router>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { firestore, auth } from '../firebase';
 import { useNavigate } from 'react-router-dom';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import './CreateNote.css'; // Import the CSS file
 
 const CreateNote = () => {
     const [title, setTitle] = useState('');
@@ -26,22 +27,26 @@ const CreateNote = () => {
     };
 
     return (
-        <div className="container">
-            <h2>Create Note</h2>
-            <form onSubmit={handleCreateNote}>
-                <input
-                    type="text"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    placeholder="Title"
-                />
-                <textarea
-                    value={content}
-                    onChange={(e) => setContent(e.target.value)}
-                    placeholder="Content"
-                />
-                <button type="submit">Create Note</button>
-            </form>
+        <div className="create-note-container">
+            <div className="create-note-form">
+                <h2>Create Note</h2>
+                <form onSubmit={handleCreateNote}>
+                    <input
+                        type="text"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        placeholder="Title"
+                        required
+                    />
+                    <textarea
+                        value={content}
+                        onChange={(e) => setContent(e.target.value)}
+                        placeholder="Content"
+                        required
+                    />
+                    <button type="submit" className="create-note-button">Create Note</button>
+                </form>
+            </div>
         </div>
     );
 };
